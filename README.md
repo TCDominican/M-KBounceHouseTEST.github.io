@@ -1,189 +1,94 @@
 # M-KBounceHouseTEST.github.io
+// App.jsx
+import React from 'react';
+import BookingForm from './components/BookingForm';
+import CalendarView from './components/CalendarView';
+import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M&K Bouncy Houses</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      background-color: #f7f7f7;
-      color: #333;
-    }
+export default function App() {
+  return (
+    <main className="min-h-screen bg-gradient-to-br from-blue-100 to-pink-100 p-6">
+      <div className="max-w-5xl mx-auto space-y-8">
+        <motion.h1
+          className="text-4xl font-bold text-center text-purple-800"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          M&K Bouncy Houses Booking
+        </motion.h1>
 
-    header {
-      background: linear-gradient(to right, #6dd5ed, #2193b0);
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+        <Card className="bg-white shadow-xl rounded-2xl">
+          <CardContent className="p-6">
+            <CalendarView />
+          </CardContent>
+        </Card>
 
-    nav {
-      background-color: #fff;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+        <Card className="bg-white shadow-xl rounded-2xl">
+          <CardContent className="p-6">
+            <BookingForm />
+          </CardContent>
+        </Card>
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #2193b0;
-    }
-
-    section {
-      padding: 30px;
-    }
-
-    .form-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .form-container h2 {
-      text-align: center;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: #28a745;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #2193b0;
-      color: white;
-    }
-
-    .calendar-placeholder {
-      text-align: center;
-      margin-bottom: 20px;
-      font-style: italic;
-      color: gray;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>M&K Bouncy Houses</h1>
-    <p>Fun for the whole family — Serving Bristol, MA (Weekends Only)</p>
-  </header>
-
-  <nav>
-    <a href="#booking">Book Now</a>
-    <a href="#contact">Contact</a>
-    <a href="#info">Rental Info</a>
-  </nav>
-
-  <section id="booking">
-    <div class="form-container">
-      <h2>Book Your Bouncy House</h2>
-
-      <div class="calendar-placeholder">
-        📅 Calendar Integration Coming Soon (weekends only, Bristol MA)
+        <footer className="text-center text-sm text-gray-600">
+          © 2025 M&K Bouncy Houses | Mark & Kelsey Galan | 774-301-6499 / 774-770-8057
+        </footer>
       </div>
+    </main>
+  );
+}
 
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required />
-        </div>
+// components/CalendarView.jsx
+import React from 'react';
 
-        <div class="form-group">
-          <label for="date">Rental Date</label>
-          <input type="date" id="date" name="date" required />
-        </div>
-
-        <div class="form-group">
-          <label for="time">Drop-Off Time</label>
-          <input type="time" id="time" name="time" required />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Call Back Number</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-
-        <div class="form-group">
-          <label for="house">Choose Bouncy House</label>
-          <select id="house" name="house" required>
-            <option value="">--Select One--</option>
-            <option value="castle">Castle Themed</option>
-            <option value="jungle">Jungle Themed</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label>
-            <input type="checkbox" name="overnight" /> Request Overnight Rental
-          </label>
-        </div>
-
-        <button type="submit">Submit Booking + Pay $50 Deposit</button>
-      </form>
+export default function CalendarView() {
+  return (
+    <div>
+      <h2 className="text-xl font-semibold text-purple-700 mb-4">Available Booking Dates (Weekends Only)</h2>
+      <p className="text-sm text-gray-600">*Calendar integration coming soon. This placeholder will show clickable available weekends for booking.</p>
     </div>
-  </section>
+  );
+}
 
-  <section id="info">
-    <h2>Rental Info</h2>
-    <p><strong>Deposit:</strong> $50 non-refundable required to reserve</p>
-    <p><strong>Service Area:</strong> Bristol, MA only</p>
-    <p><strong>Availability:</strong> Weekends only. Overnight rental available.</p>
-  </section>
+// components/BookingForm.jsx
+import React, { useState } from 'react';
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>📞 Mark Galan: 774-301-6499</p>
-    <p>📞 Kelsey Galan: 774-770-8057</p>
-  </section>
+export default function BookingForm() {
+  const [form, setForm] = useState({
+    name: '',
+    date: '',
+    time: '',
+    phone: '',
+    address: '',
+    houseType: 'Castle'
+  });
 
-  <footer>
-    &copy; 2025 M&K Bouncy Houses — All Rights Reserved
-  </footer>
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  <script>
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert("This would process the booking & open Stripe payment for deposit.");
-    });
-  </script>
-</body>
-</html>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you'd add address validation for "Bristol, MA"
+    // and payment integration for the $50 deposit
+    alert(`Booking submitted: ${JSON.stringify(form)}`);
+  };
+
+  return (
+    <form className="space-y-4" onSubmit={handleSubmit}>
+      <h2 className="text-xl font-semibold text-purple-700">Book Your Bouncy House</h2>
+      <input type="text" name="name" placeholder="Full Name" onChange={handleChange} className="w-full p-2 border rounded" required />
+      <input type="text" name="address" placeholder="Bristol, MA Address" onChange={handleChange} className="w-full p-2 border rounded" required />
+      <input type="date" name="date" onChange={handleChange} className="w-full p-2 border rounded" required />
+      <input type="time" name="time" onChange={handleChange} className="w-full p-2 border rounded" required />
+      <input type="tel" name="phone" placeholder="Call Back Number" onChange={handleChange} className="w-full p-2 border rounded" required />
+      <select name="houseType" onChange={handleChange} className="w-full p-2 border rounded">
+        <option value="Castle">Castle Themed Bouncy House</option>
+        <option value="Jungle">Jungle Themed Bouncy House</option>
+      </select>
+      <button type="submit" className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Submit $50 Deposit & Book</button>
+    </form>
+  );
+}
+
